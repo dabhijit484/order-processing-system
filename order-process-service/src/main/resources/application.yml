@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: order-process-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_processing
+    username: postgres
+    password: abhijitd
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    # Supports a schema created manually with database/02_create_schema.sql.
+    # Flyway records V1 as the baseline instead of trying to recreate existing tables.
+    baseline-on-migrate: true
+    baseline-version: 1
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  cors:
+    allowed-origin: http://localhost:5173
+  scheduling:
+    pending-to-processing-rate-ms: 300000
+
+logging:
+  level:
+    com.example.orderprocessing: INFO

@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/order_processing
+    username: postgres
+    password: postgres
+
+app:
+  cors:
+    allowed-origin: http://localhost:4173
